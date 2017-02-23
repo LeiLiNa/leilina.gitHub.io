@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/08/25/js模块化/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/06/正则API/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="潇泪　|　LiNa Lei">
@@ -285,8 +285,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/08/25/js模块化/" itemprop="url">
-                  js模块化
+                <a class="post-title-link" href="/2016/11/06/正则API/" itemprop="url">
+                  正则API
                 </a>
               
             
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-25T00:00:00+08:00">
-                2014-08-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-06T15:44:31+08:00">
+                2016-11-06
               </time>
             
 
@@ -325,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascrpit/" itemprop="url" rel="index">
-                    <span itemprop="name">javascrpit</span>
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -362,74 +362,1248 @@
       
         
           
-            <hr>
-<h1 id="当你的网站开发越来越复杂的时候，会经常遇到什么问题？"><a href="#当你的网站开发越来越复杂的时候，会经常遇到什么问题？" class="headerlink" title="当你的网站开发越来越复杂的时候，会经常遇到什么问题？"></a>当你的网站开发越来越复杂的时候，会经常遇到什么问题？</h1><ul>
-<li>恼人的命名冲突</li>
-<li>繁琐的文件依赖</li>
-<li><p>Sea.js 可以解决命名空间污染、文件依赖的问题。</p>
-<p>历史上，JavaScript一直没有模块（module）体系，<br>无法将一个大程序拆分成互相依赖的小文件，再用简单的方法拼装起来。 其他语言都有这项功能，<br>比如Ruby的 require、Python的 import ，<br>甚至就连CSS都有 @import ， 但是JavaScript任何这方面的支持都没有，这对开发大型的、复杂的项目形成了巨大障碍。</p>
+            <h3 id="创建正则表达式对象"><a href="#创建正则表达式对象" class="headerlink" title="创建正则表达式对象"></a>创建正则表达式对象</h3><ul>
+<li>创建正则表达式对象的方式:<ul>
+<li>var reg=new RegExp(/正则表达式/);</li>
+<li>var reg=/正则表达式/;</li>
+<li>/正则表达式/.方法名(参数);</li>
+</ul>
+</li>
+<li>正则表达式就是一个字符串</li>
+<li>通用字符.(除了换行)</li>
+<li>[]匹配一个字符</li>
+<li>逻辑匹配符：|  优先级最低</li>
+<li>（）调整优先级</li>
+<li>任意个字符*（紧跟在他前面的那个字符出现0或多次）</li>
+<li>任意个字符+（紧跟在他前面的那个字符出现1或多次）</li>
+<li>?（紧跟在他前面的那个字符出现0|1）</li>
+<li>{n}n次重复</li>
+<li>{b,}至少n次</li>
+<li>{n,m}至少出现n~m次</li>
+<li>^以什么开始[^]表示否定不出现</li>
+<li>$以什么结束</li>
+<li>\d 数字 \D非数字</li>
+<li>\s空字符（空格、Tab、回车） \S非空字符</li>
+<li>\w文字（除了标点符号以外的）  \W非文字</li>
+</ul>
+<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><ul>
+<li>是否匹配上</li>
+<li>将匹配上的东西显示出来</li>
+<li>将匹配上的东西替换成其他</li>
+</ul>
+<p>var patt=new RegExp(pattern,modifiers)</p>
+<h4 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h4><p>RegExp.prototype.test(str);<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> patt1=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"e"</span>);</div><div class="line"><span class="built_in">document</span>.write(patt1.test(<span class="string">"The best things in life are free"</span>));</div></pre></td></tr></table></figure></p>
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h4><p>RegExp.prototype.exec(str)</p>
 <ul>
-<li>什么是模块化？<ul>
-<li>模块化是指解决一个复杂问题时自顶向下逐层把系统划分成若干模块的过程，有多种属性，分别反映其内部特性。</li>
-<li>解决复杂问题的一种方式而已</li>
-<li>电脑：CPU、主板、显示器、内存、硬盘、输入与输出设备</li>
-<li>房屋模块化</li>
+<li>为指定的一段字符串str执行搜索匹配操作。它的返回值是一个数组或者 null。</li>
+<li>返回的数组包括匹配的字符串作为第一个元素，紧接着一个元素对应一个成功匹配被捕获的字符串的捕获括号;</li>
+<li>如果正则模式是一个空字符串，则exec方法会匹配成功，但返回的也是空字符串。</li>
+<li>整个数组的length属性等于捕获匹配的数量再加1。</li>
 </ul>
-</li>
-<li>使用模块化开发的方式带来的好处？<ul>
-<li>生产效率高</li>
-<li>可维护性高</li>
-<li>软件的声明周期中最长的阶段其实并不是开发阶段, 而是维护阶段，需求变更比较频繁，使用模块化的开发 方式更容易维护</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="模块化开发演变过程"><a href="#模块化开发演变过程" class="headerlink" title="模块化开发演变过程"></a>模块化开发演变过程</h1><h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><ul>
-<li><p>以后如果不使用第三方规范的情况下，如果写模块可以采用下面这种方式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> <span class="number">1.</span> 分号是什么意思</div><div class="line">  匿名自执行函数加分号目的是为了防止前边的代码没有加分号造成语法解析错误</div><div class="line"></div><div class="line"> <span class="number">2.</span> 为什么要给你的代码加一个匿名自执行函数</div><div class="line">   给代码加一个匿名自执行函数，为了避免全局作用域污染，核心是利用函数的私有作用域</div><div class="line"></div><div class="line"> <span class="number">3.</span> 为什么要把使用的依赖作为参数传递进来</div><div class="line">使用的依赖作为参数传递进来母的为了减少作用域查找机制，提高代码执行效率</div><div class="line"></div><div class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params">形参模块名, 依赖项, 依赖项</span>) </span>&#123;</div><div class="line">  <span class="comment">// 通过 形参模块名 修改模块</span></div><div class="line"></div><div class="line">  <span class="built_in">window</span>.模块名 = 形参模块名</div><div class="line">&#125;)(<span class="built_in">window</span>.模块名 || &#123;&#125;, 依赖项, 依赖项)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="seajs"><a href="#seajs" class="headerlink" title="seajs"></a>seajs</h2><ul>
-<li><p>在 SeaJS 中，一个 js 脚本文件就是一个模块</p>
+<h3 id="支持正则表达式的-String-对象的方法"><a href="#支持正则表达式的-String-对象的方法" class="headerlink" title="支持正则表达式的 String 对象的方法"></a>支持正则表达式的 String 对象的方法</h3><p>字符串对象的方法：正则对象被作为参数，如 str.match(regex)。<br>此时str.match(regex)方法会一次性返回所有匹配成功的结果.</p>
 <ul>
-<li>模块具有两个特性：<br>模块要有一个私有作用域：避免全局命名空间污染<br>模块可以向外导出内部成员，供别的模块加载和使用<br>所以：只要使用了 SeaJS ，那所有的 js 文件都通过 define 函数去定义该模块<br>并且将所有的模块代码写到 define 定义的回调函数中<br>define 方法的回调函数中分别传递三个参数：<br>require<br>exports<br>modules</li>
+<li>g表示的是全局</li>
+<li>i 表示的是小写的<br>str=str.replace(/帅/g,”猥琐”);<br>console.log(str);</li>
 </ul>
+<h3 id="匹配中文"><a href="#匹配中文" class="headerlink" title="匹配中文"></a>匹配中文</h3><ul>
+<li>/[\u4e00-\u9fa5]/</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/25/process/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="潇泪　|　LiNa Lei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/headimg.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="瀟涙Ray">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="瀟涙Ray" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/25/process/" itemprop="url">
+                  process
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-25T00:00:00+08:00">
+                2016-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="process-进程对象"><a href="#process-进程对象" class="headerlink" title="process(进程对象)"></a>process(进程对象)</h3><ul>
+<li><p>向标准输出写入内容（向终端写入内容）<br>或者读取标准输入中的数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">process.stdout.write(<span class="string">''</span>)<span class="comment">//输出数据到终端(相当于充当console.log的角色)</span></div><div class="line">因为在node中没有<span class="built_in">console</span>.log</div><div class="line">如果想要拼接字符串,可以使用模板进行拼接</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">msg</span>)</span>&#123;</div><div class="line">process.stdout.write(<span class="string">`aaaa<span class="subst">$&#123;msg&#125;</span>\n`</span>);</div><div class="line">其中模板语句要写在<span class="string">``</span>中,传入的变量要写在$&#123;变量&#125;中,变量可以为表达式</div><div class="line">\n表示换行;</div><div class="line">在模板字符串中,回车换行会原样保留,类似于pre标签</div><div class="line">ES6语法:<span class="built_in">console</span>.log=<span class="function">(<span class="params">msg</span>) =&gt;</span>  &#123;</div><div class="line">process.stdout.write(<span class="string">`aaaa<span class="subst">$&#123;msg&#125;</span>\n`</span>)</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">箭头函数一般出现在匿名函数中，</div></pre></td></tr></table></figure>
 </li>
-<li><p>每一个模块中有一个 require 函数可以用来加载指定模块需要接收一个模块路径</p>
+</ul>
 <ul>
-<li>加载指定模块并且执行该模块中的代码</li>
-<li>得到该模块中的暴露的接口对象：module.exports</li>
+<li><p>接受用户通过终端的输入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">process.stdin.on(<span class="string">"data"</span>,data=&gt;&#123;</div><div class="line"><span class="built_in">console</span>.log(data.toString.trim())</div><div class="line">data.toString（）======将二进制数据转换成字符串</div><div class="line">data.toString（）.trim()=====用trim（）是因为终端会将enter转换为空格</div><div class="line">需要将空格去掉；</div><div class="line">&#125;)</div><div class="line">data 是一个二进制数据</div><div class="line">用户在终端输入内容，用户在敲回车之后就会触发data事件</div><div class="line">然后执行对应的事件处理函数，将用户输入的内容传递给回调函数</div></pre></td></tr></table></figure>
+</li>
+<li><p>process.exit();退出当前进程（在终端直接输入）</p>
+</li>
+<li>process.faltform；运行平台</li>
+<li>process.pid 获取当前运行程序的进程id</li>
+<li>process.kill(进程id) 关闭一个应用程序:</li>
+<li>process.arch 获取当前Node版本的位数</li>
+<li>process.argv()；返回值为一个数组<ul>
+<li>process.argv 可以获取当前通过执行脚本的时候传递的参数（终端传入参数）</li>
+<li>默认结果是一个数组</li>
+<li>数组中第 0 项就是 node 的可执行文件的绝对路径</li>
+<li>数组中第 1 项就是 执行的当前脚本文件的绝对路径</li>
+<li>数组中从第 2 项开始，就是用户通过执行命令传递进来的参数选项，以空格划分</li>
 </ul>
 </li>
-<li><p>模块的作用域和导出</p>
+<li>process.end 获取环境变量</li>
+<li>process.version 查看当前Node版本号</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/25/promise/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="潇泪　|　LiNa Lei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/headimg.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="瀟涙Ray">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="瀟涙Ray" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/25/promise/" itemprop="url">
+                  promise
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-25T00:00:00+08:00">
+                2016-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><pre><code>所谓Promise，就是一个对象，用来传递异步操作的消息
+</code></pre><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>Promise对象代表一个异步操作，有三种状态：Pending（进行中）、<br>Resolved（已完成，又称Fulfilled）和Rejected（已失败）。只有异步操作的结果，可以决定当前是哪一<br>种状态，任何其他操作都无法改变这个状态。</li>
+<li>一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise对象的状态改变，只有两种可<br>能：从Pending变为Resolved和从Pending变为Rejected。只要这两种情况发生，状态就凝固了，不会再<br>变了，会一直保持这个结果。就算改变已经发生了，你再对Promise对象添加回调函数，也会立即得到这<br>个结果。</li>
+<li>有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此<br>外，Promise对象提供统一的接口，使得控制异步操作更加容易。<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2></li>
+<li>首先，无法取消Promise，一旦新建它就会立即执行，无法中途取消。                </li>
+<li>如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。</li>
+<li><p>当处于Pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成） </p>
+<p> ES6规定，Promise对象是一个构造函数，用来生成Promise实例。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">//  resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从Pending变为</span></div><div class="line">  <span class="comment">//  Res），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，</span></div><div class="line">  <span class="comment">//  将Promise对象的状态从“未完成”变为“失败”（即从Pending变为Rejected），在异步操作失败时调</span></div><div class="line">  <span class="comment">//  用，并将异步操作报出的错误，作为参数传递出去。</span></div><div class="line"><span class="string">``</span><span class="string">`        </span></div><div class="line">*   promise对象容器中一般是放置一个异步任务，就是封装一个异步执行的APi</div><div class="line">*   容器中异步任务失败之后会调用容器中的reject方法，将错误对象传递个reject</div><div class="line">*   容器中异步任务执行成功后会调用容器中的resolve方法，将数据传递个resolve</div><div class="line">*   当promise对象已经建立，则立即执行</div><div class="line">*   可以通过promise容器对象的then方法节后resolve中的数据</div><div class="line">*   then方法中需要接受一个回调函数，该回调函数其实就是resolve方法</div><div class="line"></div><div class="line">### then</div><div class="line">`<span class="string">``</span>js</div><div class="line">p1</div><div class="line">  .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(data)</div><div class="line">    <span class="keyword">return</span> p2</div><div class="line">  &#125;)</div><div class="line">  .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</div><div class="line">    <span class="comment">// 当前这个 then 里面的回调函数的参数，就是上一个 then 中回调函数的返回值</span></div><div class="line">    <span class="comment">// 该返回值有三种情况：</span></div><div class="line">    <span class="comment">//    1. 没有返回值，就是 undefined</span></div><div class="line">    <span class="comment">//    2. 手动的 return 普通值</span></div><div class="line">    <span class="comment">//    3. 返回一个 Promise 对象</span></div><div class="line">    <span class="comment">//        如果是 Promise 对象，那么当前这个 then 就是该 Promise 对象的 resolve 函数的结果</span></div><div class="line">    <span class="built_in">console</span>.log(data)</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>)</div><div class="line">    <span class="keyword">return</span> p3</div><div class="line">  &#125;)</div><div class="line">  .then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(data)</div><div class="line">  &#125;)</div><div class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">    <span class="comment">// 当前这个 catch 方法，就可以把之前所有的任务中可能出现的异常都捕获到</span></div><div class="line">    <span class="comment">// 甚至包括 then 的回调函数中的异常也可以捕获到</span></div><div class="line">    <span class="built_in">console</span>.log(err)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/25/path/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="潇泪　|　LiNa Lei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/headimg.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="瀟涙Ray">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="瀟涙Ray" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/25/path/" itemprop="url">
+                  path模块（momentjs.）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-25T00:00:00+08:00">
+                2016-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>path.basename(path[, ext]): 获取文件名部分</p>
+<p>获取最后一个路径借口</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>)</div><div class="line">  <span class="comment">// returns 'quux.html'</span></div><div class="line"></div><div class="line">path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>, <span class="string">'.html'</span>)</div><div class="line">  <span class="comment">// returns 'quux'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>path.dirname(path): 获取目录部分</p>
+<p>返回一个路径的目录</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path.dirname(<span class="string">'/foo/bar/baz/asdf/quux'</span>)</div><div class="line"><span class="comment">// returns '/foo/bar/baz/asdf'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>path.extname(path): 获取扩展名部分</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">path.extname(<span class="string">'index.html'</span>)</div><div class="line"><span class="comment">// returns '.html'</span></div><div class="line"></div><div class="line">path.extname(<span class="string">'index'</span>)</div><div class="line"><span class="comment">// returns ''</span></div><div class="line"></div><div class="line">path.extname(<span class="string">'.index'</span>)</div><div class="line"><span class="comment">// returns ''</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>path.isAbsolute(path): 判断是否是绝对路径</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">path.isAbsolute(<span class="string">'/baz/..'</span>)  <span class="comment">// true</span></div><div class="line">path.isAbsolute(<span class="string">'qux/'</span>)     <span class="comment">// false</span></div><div class="line">path.isAbsolute(<span class="string">'.'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>path.join([…paths]): 将多个路径拼接为一个路径</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">path.isAbsolute(<span class="string">'/baz/..'</span>)  <span class="comment">// true</span></div><div class="line">path.isAbsolute(<span class="string">'qux/'</span>)     <span class="comment">// false</span></div><div class="line">path.isAbsolute(<span class="string">'.'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>path.normalize(path): 将一个非标准路径转为一个标准路径</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">path.normalize(<span class="string">'/foo/bar//baz/asdf/quux/..'</span>)</div><div class="line"><span class="comment">// returns '/foo/bar/baz/asdf'</span></div><div class="line"><span class="comment">//返回值为/..之前路径的目录</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>path.parse(path):将路径转换为路径对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">path.parse(<span class="string">'/home/user/dir/file.txt'</span>)</div><div class="line"><span class="comment">// returns</span></div><div class="line"><span class="comment">// &#123;</span></div><div class="line"><span class="comment">//    root : "/",</span></div><div class="line"><span class="comment">//    dir : "/home/user/dir",</span></div><div class="line"><span class="comment">//    base : "file.txt",</span></div><div class="line"><span class="comment">//    ext : ".txt",</span></div><div class="line"><span class="comment">//    name : "file"</span></div><div class="line"><span class="comment">// &#125;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>path.resolve([…paths]): 将多个路径拼接为一个绝对路径</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">path.resolve(<span class="string">'wwwroot'</span>, <span class="string">'static_files/png/'</span>, <span class="string">'../gif/image.gif'</span>)</div><div class="line"><span class="comment">// if the current working directory is /home/myself/node,</span></div><div class="line"><span class="comment">// this returns '/home/myself/node/wwwroot/static_files/gif/image.gif'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>path.sep: 获取操作系统路径分隔符”\,\,/“</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'foo/bar/baz'</span>.split(path.sep)</div><div class="line"><span class="comment">// returns ['foo', 'bar', 'baz']</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/10/gulp/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="潇泪　|　LiNa Lei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/headimg.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="瀟涙Ray">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="瀟涙Ray" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/10/gulp/" itemprop="url">
+                  gulp
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-10T00:00:00+08:00">
+                2016-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端框架/" itemprop="url" rel="index">
+                    <span itemprop="name">前端框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>首先在顶级目录下有一个</li>
+<li>加载gulp<ul>
+<li>transport = require(‘gulp-seajs-transport’);</li>
+<li></li>
+</ul>
+</li>
+<li>gulp.task(任务名称，function(){<br>gulp.src(‘./public/!(libs)/<em>*/</em>.js’)<br>.pipe(transport())<br>.pipe(gulp.dest(存在哪个目录))</li>
+</ul>
+<p>})</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/10/express/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="潇泪　|　LiNa Lei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/headimg.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="瀟涙Ray">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="瀟涙Ray" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/10/express/" itemprop="url">
+                  express
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-10T00:00:00+08:00">
+                2016-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端框架/" itemprop="url" rel="index">
+                    <span itemprop="name">前端框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/10/http资料整理/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="潇泪　|　LiNa Lei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/headimg.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="瀟涙Ray">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="瀟涙Ray" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/10/http资料整理/" itemprop="url">
+                  http协议
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-10T00:00:00+08:00">
+                2016-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/http/" itemprop="url" rel="index">
+                    <span itemprop="name">http</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><ul>
+<li>像这种通过发送请求获取服务器资源的web浏览器，都可以成为客户端。</li>
+<li>web使用一种http（超文本传输协议）的协议作为规范，完成客户端到服务端等一系列运作流程。  </li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/06/angular/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="潇泪　|　LiNa Lei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/headimg.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="瀟涙Ray">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="瀟涙Ray" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/06/angular/" itemprop="url">
+                  angular笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-06T00:00:00+08:00">
+                2016-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端框架/" itemprop="url" rel="index">
+                    <span itemprop="name">前端框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>可以看Coding网站</p>
+<h3 id="什么框架和库"><a href="#什么框架和库" class="headerlink" title="什么框架和库"></a>什么框架和库</h3><h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><p>页面内部的跳转</p>
+<h3 id="SPA单页应用"><a href="#SPA单页应用" class="headerlink" title="SPA单页应用"></a>SPA单页应用</h3><ul>
+<li>就是利用hash替换页面的局部内容</li>
+<li>传统的网页跳转,默认向服务器发送同步请求,会发生页面跳转</li>
+</ul>
+<h3 id="angular应用"><a href="#angular应用" class="headerlink" title="angular应用"></a>angular应用</h3><ul>
+<li>引包</li>
+<li>在body添加一个属性  <code>ng-app</code> ng 应用程序的入口标识</li>
+<li>在body中写一个<code>hello world!</code></li>
+<li><p>解析过程</p>
 <ul>
-<li>模块天生就是一个私有作用域，在该模块内部定义的所有成员，默认都是该模块私有的</li>
-<li><p>如果模块内部的成员想要被外部所访问：</p>
-<p>必须通过使用 module.exports 对象向外暴露<br>require 函数加载模块的时候，会自动拿到模块内部的 module.exports 对象</p>
+<li>浏览器从上到下一次解析DOM文档</li>
+<li>当浏览器解析到body上有一个ng-app属性的时候,对于不识别的属性会xuanze忽略</li>
+<li>当浏览器解析到花括号时候,无法识别花括号里边的内容,会将他当成普通字符串进行渲染</li>
+<li>当浏览器发现script标签指定的angular.js引用文件的时候,发送请求下载该文件</li>
+<li>当angular.js程序下载成功后,自动执行程序</li>
+<li>ng会自动找到网页中具有ng-app属性的元素,然后开始解析该元素内部所有能被ng所识别的元素,也就是说ng-app在这里充当ng应用程序的入口标识,同时也是ng应用程序的管理边界。</li>
+</ul>
+</li>
+<li><p>当ng找到ng-app入口标识后,启动一个ng-app应用程序</p>
+</li>
+<li>在应用程序中开辟一个空间,这个空间其实就是一个对象</li>
+<li>ng发现ng-init指令,拿到里面对应的值<code>name=&quot;world&quot;</code>; </li>
+<li>ng自动在应用程序内部空间对象中添加一个属性<code>name=world</code>;</li>
+<li>ng发现ng-model指令之后,让dom元素的例如<code>input</code>中的value和数据模型中的name建立一个绑定关系（双向绑定）<ul>
+<li>当input的value值发生变化的时候,模型数据中的那么也跟着改变</li>
+<li>当模型中的name也发生改变的时候,所有绑定该属性的地方都会跟着变  </li>
+</ul>
+</li>
+<li>ng发现h1中的<code></code></li>
+</ul>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><h3 id="升级版执行"><a href="#升级版执行" class="headerlink" title="升级版执行"></a>升级版执行</h3><ul>
+<li>引包</li>
+<li>设置入口标识,设置控制器（让视图与$scope建立作用关系）</li>
+<li>定义全局控制器函数<ul>
+<li>主要目的是要将逻辑写到JavaScript代码中</li>
+<li>其次是为了拿到$Scope数据模型对象</li>
+<li>通过操作$scope数据模型和视图做交互</li>
+</ul>
+</li>
+<li>根据视图暴露模型数据成员<ul>
+<li>给$scope初始化一些数据成员</li>
+<li>同时暴露一些行为函数</li>
+</ul>
+</li>
+<li><p>angular闪烁解决方式<br>解决方式有两种:</p>
+<ul>
+<li>将ng脚本引入到head中,ng官方推荐将ng脚本在最上边引入</li>
+<li><p>在所有使用了表达式的外部节点上加一个属性<code>ng-cloak</code>,当加上<code>ng-cloak</code>的时候,那个不会等待DOM onload执行结束就会先在加了那个-cloak的</p>
+</li>
+<li><p>ng在启动执行的时候会自动向head中插入一个style样式</p>
+</li>
+<li>当ng解析完毕之后,ng-cloak会自动移除</li>
+</ul>
+<ul>
+<li>在所有使用表达式的地方都通过ng-bind指令来代替<ul>
+<li>也就是说使用了ng-bind完全可以替代表达式</li>
+<li>用了他可以解决就算脚本在底部引入也不闪烁的问题</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ng默认默认是在document.onload 的时候开始解析执行</li>
+<li>所有的$scope都有一个根作用域$rootscope</li>
+</ul>
+<h3 id="如何划分控制器"><a href="#如何划分控制器" class="headerlink" title="如何划分控制器"></a>如何划分控制器</h3><ul>
+<li>一个页面中按照不同的功能划分不同的功能模块</li>
+<li><p>定义一个模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 注意：必须指定第二个参数,否则变成获取已定义的模块</span></div><div class="line"><span class="keyword">var</span> demoApp = angular.module(<span class="string">'DemoApp'</span>, [])(创建一个模块,没有任何依赖项)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="模块加载"><a href="#模块加载" class="headerlink" title="模块加载"></a>模块加载</h3><ul>
+<li>创建了一个模块（没有任何依赖项）</li>
+<li>Angular 中的模块不像一些 CMD、CommonJS、AMD 等模块定义规范<ul>
+<li>有输入有输出</li>
+<li>Angular 中的模块中的输入与输出（加载模块依赖、暴露模块成员）体现不够明显</li>
+</ul>
+</li>
+<li>Angular 中的模块也不能通过代码去主动的加载另一个模块</li>
+<li>Angular 中的模块唯一体现的地方在于：<ul>
+<li>解决原来全局控制器命名污染的问题</li>
+<li>解决按照不同的页面,将不同的控制器组织到一起<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  angular.module(<span class="string">'Demo1App'</span>, [])</div><div class="line">  .controller(<span class="string">'Demo1Controller'</span>, [<span class="string">'$scope'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</div><div class="line">    $scope.name = <span class="string">'Demo1Controller'</span></div><div class="line">  &#125;])</div><div class="line">     </div><div class="line">angular.module(<span class="string">'Demo2App'</span>, [])</div><div class="line">  .controller(<span class="string">'Demo2Controller'</span>, [<span class="string">'$scope'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</div><div class="line">    $scope.name = <span class="string">'Demo2Controller'</span></div><div class="line">  &#125;])</div><div class="line"><span class="comment">// 手动引导模块的启动,可以启动多个模块,但是都必须作用到一个元素上</span></div><div class="line"><span class="comment">// 这种方式不推荐使用</span></div><div class="line">angular.bootstrap(<span class="built_in">document</span>.getElementById(<span class="string">'body'</span>), [<span class="string">'Demo1App'</span>, <span class="string">'Demo2App'</span>])</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="seajs-执行过程"><a href="#seajs-执行过程" class="headerlink" title="seajs 执行过程"></a>seajs 执行过程</h2><ul>
-<li><p>首先需要在浏览器页面中引包，即引入seajs</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"seajs路径"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>调用seajs.use方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">seajs.use(可以引起加载整个模块化的主要就是文件路径，其后缀js可以省略)；</div></pre></td></tr></table></figure>
-</li>
-<li><p>加载的模块化js需要写在defind函数中</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require,exports,module</span>)</span>&#123;</div><div class="line">     <span class="built_in">require</span>(暴露接口的路径)返回值为暴露接口对象</div><div class="line">     代码块</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
-<li><p>如若想要实现某个功能，且某个功能代码量比较大，可以将该功能写入模块中，通过module.exports<br>暴露接口</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require,exports,module</span>)</span>&#123;</div><div class="line">     <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x,y</span>)</span>&#123;</div><div class="line">         <span class="keyword">return</span> <span class="built_in">parseFloat</span>(x)+<span class="built_in">parseFloat</span>(y);</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     <span class="built_in">module</span>.exports.add = add;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="处理html标签"><a href="#处理html标签" class="headerlink" title="处理html标签"></a>处理html标签</h3><ul>
+<li>如果想要绑定 HTML 字符串</li>
+<li>则必须使用这种方式<ul>
+<li>npm install –save angular-sanitize</li>
+<li>在使用该字符串的所属的模块中加载 ngSanitize 模块即可生效<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'DemoApp'</span>, [<span class="string">'ngSanitize'</span>])</div><div class="line">.controller(<span class="string">'DemoController'</span>, [<span class="string">'$scope'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</div><div class="line">$scope.title = <span class="string">'母猪的生产过程'</span></div><div class="line">$scope.content = <span class="string">'&lt;script&gt;window.alert("hello")&lt;\/script&gt;&lt;p&gt;作者：xxx&lt;/p&gt; &lt;p&gt;&lt;strong&gt;母猪&lt;/strong&gt;的生产过程&lt;/p&gt;'</span></div><div class="line">        &#125;])</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="exports与module-exports联系与区别"><a href="#exports与module-exports联系与区别" class="headerlink" title="exports与module.exports联系与区别"></a>exports与module.exports联系与区别</h2><ul>
-<li><p>每个文件模块中默认的对外的接口对象是module.exports<br>同时seajs还提供了一个接口对象exports</p>
-<p>注意：</p>
-<p>exports 是module.exports接口对象的一个引用，也就是说<br>修改了exports相当于修改了module.exports，但是，如果想要向外<br>暴露一个单独的变量、函数等成员，那就必须通过给module.exports<br>赋值才可以</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require, exports, module</span>) </span>&#123;</div><div class="line">  <span class="comment">// 每一个模块内部相当于有这么一句代码</span></div><div class="line">  <span class="comment">// var exports = module.exports</span></div><div class="line"></div><div class="line">  exports.add = <span class="built_in">require</span>(<span class="string">'./add'</span>)</div><div class="line">  exports.sub = <span class="built_in">require</span>(<span class="string">'./sub'</span>)</div><div class="line"></div><div class="line">  <span class="comment">// 给 exports 赋值，就切断了和 moudle.exports 之间的引用关系</span></div><div class="line">  <span class="comment">// 原来的 module.exports 接口对象不受影响</span></div><div class="line">  <span class="comment">// 所以：在模块内部给 exports 赋值不管用</span></div><div class="line">  <span class="comment">// exports = function () &#123;</span></div><div class="line">  <span class="comment">//   console.log('test')</span></div><div class="line">  <span class="comment">// &#125;</span></div><div class="line"></div><div class="line">  <span class="comment">// 每一个函数内部相当于有这么一句代码</span></div><div class="line">  <span class="comment">// return module.exports</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ng-repeat遇到的坑"><a href="#ng-repeat遇到的坑" class="headerlink" title="ng-repeat遇到的坑"></a><code>ng-repeat</code>遇到的坑</h3><ul>
+<li><p><code>ng-repeat</code> 在遍历普通数据类型的时候,如果有相同的值,会报错</p>
+<h3 id="在异步请求当中修改了数据模型为什么不起作用？"><a href="#在异步请求当中修改了数据模型为什么不起作用？" class="headerlink" title="在异步请求当中修改了数据模型为什么不起作用？"></a>在异步请求当中修改了数据模型为什么不起作用？</h3><ul>
+<li>如果在普通的定时器函数内部修改了 $scope 视图模型成员</li>
+<li><p>一定要通过 $scope.$apply() 手动刷新视图模型才行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'DemoApp'</span>, [])</div><div class="line">      .controller(<span class="string">'DemoController'</span>, [<span class="string">'$scope'</span>, <span class="string">'$timeout'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $timeout</span>) </span>&#123;</div><div class="line">        $scope.loading = <span class="literal">true</span></div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            $scope.loading = <span class="literal">false</span></div><div class="line">            </div><div class="line">        * $scope.$apply() * </div><div class="line">           </div><div class="line">          &#125;, <span class="number">10000</span>)</div><div class="line">          <span class="comment">// $timeout(function () &#123;</span></div><div class="line">          <span class="comment">//   $scope.loading = false</span></div><div class="line">          <span class="comment">// &#125;, 2000)</span></div><div class="line">      &#125;])</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ng-hide-show-if-switch-区别"><a href="#ng-hide-show-if-switch-区别" class="headerlink" title="ng-hide-show-if-switch 区别"></a>ng-hide-show-if-switch 区别</h3><p>面试题：ng-if-hide-show 的区别</p>
+<ul>
+<li><p>ng-if 是直接就不渲染这个 DOM 了</p>
+<p>当为 true 的时候直接渲染<br>当为 false 的时候直接移除该元素</p>
+</li>
+<li>ng-hide</li>
+<li><p>ng-show</p>
+<p>两者无论是 true 还是 false 元素都在,是通过样式来控制的</p>
+</li>
+</ul>
+<h3 id="ng-src"><a href="#ng-src" class="headerlink" title="ng-src"></a>ng-src</h3><p>所有需要动态指定 src 的地方都通过 ng-src 来替换,否则浏览器会真的对这个 src 发起请求</p>
+<h3 id="单项数据的绑定"><a href="#单项数据的绑定" class="headerlink" title="单项数据的绑定"></a>单项数据的绑定</h3><p>  ng 中也提供了一些单向数据绑定的指令<br>  也就是说只能通过模型获取到数据<br>  但是不能通过改变元素值而影响视图模型数据</p>
+<h3 id="ng中的过滤器"><a href="#ng中的过滤器" class="headerlink" title="ng中的过滤器"></a>ng中的过滤器</h3><ul>
+<li>date <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;time: date:&apos;yyyy-mm-dd HH:mm:ss&apos;&#125;&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -463,9 +1637,611 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/12/15/数据库/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="潇泪　|　LiNa Lei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/headimg.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="瀟涙Ray">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="瀟涙Ray" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/15/数据库/" itemprop="url">
+                  数据库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-15T00:00:00+08:00">
+                2015-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DB/" itemprop="url" rel="index">
+                    <span itemprop="name">DB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="MySQL数据库"><a href="#MySQL数据库" class="headerlink" title="MySQL数据库"></a>MySQL数据库</h3><ul>
+<li>Oracle</li>
+<li>DB2</li>
+<li>MS SQL Server</li>
+</ul>
+<h3 id="创建数据库和表"><a href="#创建数据库和表" class="headerlink" title="创建数据库和表"></a>创建数据库和表</h3><ul>
+<li><p>增删改查</p>
+<p>增加数据：</p>
+<p>INSERT INTO 表名<br>VALUES(列1值,列2值,…)<br>按照指定列添加数据：</p>
+<p>INSERT INTO 表名(列1名, 列2名,…)<br>VALUES(列1值, 列2值,…)<br>更新全部数据：</p>
+<p>UPDATE 表名<br>  SET 列名=值, 列名=值[,列名=值]<br>按条件更新：</p>
+<p>UPDATE 表名<br>  SET 列名=值, 列名=值[,列名=值]<br>WHERE 条件;</p>
+<ul>
+<li>条件可以使用的运算符：</li>
+</ul>
+<p>比较运算符 &gt; &lt; &lt;= &gt;= = &lt;&gt;  大于、小于、大于(小于等于)、不等于<br>  BETWEEN…AND 显示在某一区间的值<br>  IN(set) 显示在in列表中的值，例：in(100,200)<br>  LIKE ‘张pattern’ 模糊查询%<br>  IS NULL 判断是否为空</p>
+<p>逻辑运算符 AND 多个条件同时成立<br>  OR  多个条件任一成立<br>  NOT 不成立，例：WHERE NOT(salary&gt;100)</p>
+</li>
+<li><p>删除数据：</p>
+<p>删除全部数据：</p>
+<p>DELETE FROM 表名;<br>根据条件删除：</p>
+<p>DELETE FROM 表名<br>WHERE 条件;</p>
+</li>
+<li><p>查询表中数据：   </p>
+<p>查询表中所有数据：</p>
+<p>SELECT * FROM 表名;<br>按照指定列查询表中所有数据：</p>
+<p>SELECT 列名,列名[,列名] FROM 表名;<br>根据条件查询数据：</p>
+<p>SELECT * FROM 表名<br>WHERE 条件;</p>
+</li>
+</ul>
+<h3 id="使用Node操作MySQL数据库"><a href="#使用Node操作MySQL数据库" class="headerlink" title="使用Node操作MySQL数据库"></a>使用Node操作MySQL数据库</h3><ul>
+<li>npm install mysql</li>
+<li>连接数据创建连接实例</li>
+<li><p>query方法，不是用来SELECT的，任何SQL语言都支持</p>
+<ul>
+<li>第一个参数是SQL语言 </li>
+<li>第二个参数是可选</li>
+<li>第三个参数：回调函数<ul>
+<li>第一个参数就是异常错误对象</li>
+<li>第二个参数就是操作结果</li>
+<li>可以省略</li>
+</ul>
+</li>
+<li><p>一般一个链接操作一次数据库， 操作完毕断开连接<br>为什么不使用同一个连接操作数据库呢？<br>原因是连接可能失效，例如操作的过程中服务器宕机了，那么就会造成代码异常</p>
+</li>
+<li><p>任何删除、修改的操作结果rows都是一个对象<br>对象中有一个属性很重要：affectedRows<strong><em>*</em></strong></p>
+</li>
+<li>插入的时候，有<code>row.affectedRows</code>受影响，<code>row.insertId</code>,</li>
+<li>删除为空条件判断使用IS NULL<br>删除问不为空的条件判断使用 IS NOT NULL</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mysql      = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</div><div class="line"><span class="comment">//连接数据库</span></div><div class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</div><div class="line">  <span class="attr">host</span>     : <span class="string">'localhost'</span>,<span class="comment">//指定地址</span></div><div class="line">  user     : <span class="string">'me'</span>,</div><div class="line">  <span class="attr">password</span> : <span class="string">'secret'</span>,</div><div class="line">  <span class="attr">database</span> : <span class="string">'my_db'</span><span class="comment">//操作的数据库</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">//开始操作之前，先连接，这一步可以省略</span></div><div class="line">connection.connect();</div><div class="line"><span class="comment">//操作数据库，当操作数据库的时候会自动的去connect进行连接</span></div><div class="line">connection.query(<span class="string">'SELECT 1 + 1 AS solution'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, rows, fields</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</div><div class="line"></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'The solution is: '</span>, rows[<span class="number">0</span>].solution);</div><div class="line">  <span class="comment">//如果是SELECT   row就是一个结果数组(数组中是一个一个对象，从数据库中查询的对象)</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">//关闭数据库</span></div><div class="line">connection.end();</div><div class="line">一般一个连接操作一次数据库，操作完毕断开连接，原因是连接可能失效，例如操作数据库的时候，数据库服务器宕机了</div><div class="line">那么回造成代码异常</div></pre></td></tr></table></figure>
+<ul>
+<li>数据库连接，一般是有一百个，超过这个值得时候，可以创建一个连接池</li>
+<li>node操作数据库需要创建连接，操作数据库，关闭连接、<br>这种比较操作数据库的方式比较耗时。</li>
+<li>这种比较耗时的方式可以通过创建一个连接池，Connection Pool<br>从池子中拿一个可用的连接，然后操作数据库，最后将连接释放。</li>
+<li>只要操作数据库的回调函数被执行，说明这个连接的任务完成了，<br>在执行中不管执行还是没有执行都要提前先释放一下。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/18/Node中的javascript/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="潇泪　|　LiNa Lei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/headimg.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="瀟涙Ray">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="瀟涙Ray" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/18/Node中的javascript/" itemprop="url">
+                  Node中的javascript
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-18T00:00:00+08:00">
+                2015-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Node运行环境"><a href="#Node运行环境" class="headerlink" title="Node运行环境"></a>Node运行环境</h2><ul>
+<li>REPL运行环境<ul>
+<li>read:读取</li>
+<li>eval：执行</li>
+<li>print：输出</li>
+<li>LOOP：循环</li>
+<li>在终端输入<code>node+enter</code>，则进入REPL环境</li>
+<li><code>Ctrl+cc</code>，退出REPL环境<ul>
+<li><code>kangax.github.io</code>//查看ES6支持版本<h2 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h2><h3 id="globle"><a href="#globle" class="headerlink" title="globle"></a>globle</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相对于浏览器的全局对象window</li>
+<li>全局作用域和模块作用域的概念<h3 id="console"><a href="#console" class="headerlink" title="console"></a>console</h3></li>
+<li>log</li>
+<li>info</li>
+<li>error</li>
+<li>warn</li>
+</ul>
+<h3 id="buffer"><a href="#buffer" class="headerlink" title="buffer"></a>buffer</h3><ul>
+<li>全局构造函数，也可以说是一个全局对象</li>
+<li>专门用来解析二进制数据的</li>
+<li>buffer类似于数组，二进制数据的一种表现形式</li>
+<li>数组内部是一个由 16进制 表现形式的一个一个的元素，每个元素其实就是一个字节<br>一个字节就是 8位<h3 id="全局函数"><a href="#全局函数" class="headerlink" title="全局函数"></a>全局函数</h3></li>
+</ul>
+<ul>
+<li>在 Node 环境中，也提供了 定时器对象，和浏览器中的定时器用法一致，但是实现方式有差异</li>
+<li>setInterval 和 clearInterval</li>
+<li>setTimeout 和 clearTimeout</li>
+<li>setImmediate 和 clearImmediate<ul>
+<li>这也是一个定时器，但是不需要时间<br>可以异步的执行一段代码<br>类似于 <code>setTimeout(function () {}, 0)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Node中的模块成员"><a href="#Node中的模块成员" class="headerlink" title="Node中的模块成员"></a>Node中的模块成员</h3><ul>
+<li>dirname 和 filename<ul>
+<li>这是两个属性，每一个模块内部都可以直接使用</li>
+</ul>
+</li>
+<li>require<ul>
+<li>加载模块，执行模块中的代码，得到该模块中的 module.exports 接口对象</li>
+</ul>
+</li>
+<li>exports<ul>
+<li>它是 module.exports 的一个引用</li>
+</ul>
+</li>
+<li>module<ul>
+<li>模块对象，其中有一个非常重要的属性:module.exports</li>
+<li>每一个模块内部对外暴露的成员就是 module.exports</li>
+</ul>
+</li>
+</ul>
+<h3 id="模块系统"><a href="#模块系统" class="headerlink" title="模块系统"></a>模块系统</h3><ul>
+<li>如何定义模块成员</li>
+<li><p>模块成员之间如何进行通信</p>
+<h4 id="commomJS"><a href="#commomJS" class="headerlink" title="commomJS"></a>commomJS</h4><p>commonJS 包含模块定义规范，还给javaScript语言没有触及到服务器领域制定了一些规范<br>比如：二进制数据操作、文件操作、网络操作、进程操作、？模块系统规范。。。</p>
+</li>
+</ul>
+<ul>
+<li>每一个JavaScript脚本就是一个模块，每一个模块都是一个私有作用域</li>
+<li>通过require加载模块</li>
+<li>通过module.exports 暴露接口<h4 id="Node的模块形式（三种）"><a href="#Node的模块形式（三种）" class="headerlink" title="Node的模块形式（三种）"></a>Node的模块形式（三种）</h4></li>
+<li><p>文件模块</p>
+<p>以 ./ 或 ../ 开头的模块标识就是文件模块，一般就是用户编写的。</p>
+</li>
+<li><p>核心模块</p>
+<ul>
+<li>核心模块就是 node 内置的模块，需要通过唯一的标识名称来进行获取。</li>
+<li>每一个核心模块基本上都是暴露了一个对象，里面包含一些方法供我们使用</li>
+<li>一般在加载核心模块的时候，变量的起名最好就和核心模块的标识名同名即可</li>
+<li>核心模块本质上也是文件模块<ul>
+<li>核心模块已经被编译到了 node 的可执行程序，一般看不到</li>
+<li>可以通过查看 node 的源码看到核心模块文件</li>
+<li>核心模块也是基于 CommonJS 模块规范</li>
+</ul>
+</li>
+<li>常用的核心模块</li>
+</ul>
+</li>
+</ul>
+<pre><code>模块名称          作用
+
+fs               文件操作
+
+http             http服务
+
+net              Socket网络编程
+
+os               操作系统相关
+
+path             路径操作
+
+querystring      处理查询字符串  |
+
+url              解析处理url路径
+
+util             工具函数
+</code></pre><ul>
+<li>第三方模块<ul>
+<li>只能在 Node 中使用的包<br>例如：open fs-extra</li>
+<li>只能在浏览器中使用的包<br>例如 jquery swiper</li>
+<li>既能在浏览器也能在Node中使用的包<br>不涉及具体的环境 API<br>例如 moment underscore</li>
+</ul>
+</li>
+</ul>
+<h2 id="模块的加载流程"><a href="#模块的加载流程" class="headerlink" title="模块的加载流程"></a>模块的加载流程</h2><ul>
+<li>优先从缓存加载(如果缓存中已经存在，就不会在去加载);</li>
+<li>模块标识符分析<ul>
+<li>扩展名分析<ul>
+<li>.js<br>通过fs文件同步读取js文件并编译执行</li>
+<li>.node<br>通过C/C++进行编写的Addon。通过dlopen方法进行加载。</li>
+<li>.json<ul>
+<li>读取文件调用JSON.parse解析加载<br>-</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>文件模块</li>
+<li>核心模块</li>
+<li>第三方模块<ul>
+<li>先看一下是不是文件模块，再看一下是不是核心模块<br>不可能有第三方模块和核心模块重名</li>
+<li>npm install 包名 的时候的这个包的名称，就可以通过 require 函数指定加载</li>
+<li>对于第三方包，Node 会直接进入当前 app.js 同级目录下的 node_modules 中找该模块名同名的目录</li>
+<li>如果找到，找 该模块名同名的目录中的 package.json 文件</li>
+<li>如果找到该文件，则解析出来该文件，找里面的 main 属性</li>
+<li>如果 main 中指定的文件模块存在，则直接加载</li>
+<li>如果main中指定的文件模块没有扩展名</li>
+<li>.js .node .json</li>
+<li>如果没有找到 moment 中的 package.json 文件</li>
+<li>或者找到package.json 文件，但是没有 main 属性</li>
+<li>或者找打 mian 属性，但是指定的文件模块不存在</li>
+<li>这种情况下，node 会按照 index.js index.node index.json 的方式去查找</li>
+<li>如果压根儿就没有 moment 这个目录，那这个时候进入上一级目录下的 node_modules 查找</li>
+<li>当在上一级 node_modules 目录下找到 moment 目录的时候，查找规则同上</li>
+<li>如果上一级还找不到，则继续向上查找，规则同上</li>
+<li>直到一直到达当前文件 app.js 所属盘符根路径，如果还找不到，则报错：can not find module</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="包与npm"><a href="#包与npm" class="headerlink" title="包与npm"></a>包与npm</h2><pre><code>包其实就是一些模块组织到一起，放到一个目录中的一个称呼，叫包或者模块都行。
+</code></pre><h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><pre><code>每个项目的根目录下面，一般都有一个package.json文件， 定义了这个项目所需要的各种模块，以及项目的配置信息（比如名称、版本、依赖项等信息）。
+
+package.json文件内部就是一个JSON对象， 该对象的每一个成员就是当前项目的一项设置。 比如name就是项目名称，version是版本。
+</code></pre><ul>
+<li><p>npm init [-y]</p>
+<p>生成 package.json 文件</p>
+</li>
+<li><p>main</p>
+<p>用来指定加载的时候的入口模块的</p>
+</li>
+<li><p>dependencies</p>
+<p>当前项目或者说包的依赖项<br>npm install 的时候，会自动查找当前目录下的 package.json 文件中的 dependencies 属性<br>然后依次下载</p>
+</li>
+</ul>
+<h2 id="本地安装与全局安装"><a href="#本地安装与全局安装" class="headerlink" title="本地安装与全局安装"></a>本地安装与全局安装</h2><ul>
+<li>全局安装<ul>
+<li>本质上也是一个包</li>
+<li>只不过提供了一个命令的使用形式</li>
+<li>可以在任意目录中使用该命令工具辅助完成一些功能</li>
+<li>这个工具不能通过代码调用</li>
+<li>这些工具就是类似于 nvm、nrm、lessc、browser-sync 等工具</li>
+</ul>
+</li>
+<li><p>本地安装</p>
+<ul>
+<li>对于想要使用第三方包的功能，就必须下载到本地项目中， 想要使用第三方包暴露的接口 API 辅助实现功能。<h2 id="npm命令操作"><a href="#npm命令操作" class="headerlink" title="npm命令操作"></a>npm命令操作</h2></li>
+</ul>
+</li>
+<li><p>npm help：查看 npm 命令列表</p>
+</li>
+<li>npm -l：查看各个命名的简单用法</li>
+<li>npm -v：查看 npm 的版本</li>
+<li>npm init [-y]：初始化一个 package.json 文件</li>
+<li>npm info 包名 [字段名]：查看指定模块的 package.json 信息</li>
+<li>npm search 包名：该命令用于搜索 npm 仓库</li>
+<li>npm list：以树型结构列出当前项目安装的所有模块，以及它们依赖的模块</li>
+<li>npm list 包名：列出单个模块</li>
+<li>npm list -g：列出全局安装的模块</li>
+<li>npm install [–save] 包名[#版本号]<ul>
+<li>npm install 包名：安装包到当前项目下的 node_modules 目录下</li>
+<li>npm install|i –save|-S 包名 安装包的同时把依赖项保存到 包说明文件中<br>本地项目安装：目的是为了辅助你的代码功能开发</li>
+</ul>
+</li>
+<li>npm uninstall [–save] 包名<ul>
+<li>npm uninstall 包名：删除包，但是如果包说明文件中有依赖项，那么不会删除</li>
+<li>npm uninstall –save 包名：删除包，同时将 package.json 文件中的依赖项也删除</li>
+</ul>
+</li>
+<li>npm install</li>
+<li>npm install -g 包名<br>全局安装：一般用于安装命令行中的 CLI 工具</li>
+<li>npm uninstall -g 包名</li>
+<li>npm config<ul>
+<li>npm config list 查看 npm 配置项</li>
+<li>npm config set init.author.name $name 使用 npm init 时，默认的 name</li>
+<li>npm config set init.author.email $email 使用 npm init 时，默认的 email</li>
+<li>npm congig set prefix “路径” 改变全局包安装路径</li>
+<li>npm config set registry “镜像路径”     <h2 id="path"><a href="#path" class="headerlink" title="path"></a>path</h2></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>path.dirname(path)//获取一个路径的目录部分</li>
+<li>path.isAbsolute()//以<code>/</code>和<code>c:/</code>判断是不是绝对路径</li>
+<li>path.join()//将多个参数中间以<code>\</code>的形式将路径进行拼接<br>将多个路径拼接为一个完整的路径<br><code>js
+path.join()</code></li>
+<li>path.parse()//将路径当中的任意部分转换为对象</li>
+<li>path.format（{}）将路径对象转换为路径，与path.parse（）方法相反</li>
+<li>path.sep（）获取操作系统路径分隔符<ul>
+<li>应用场景：多平台转入</li>
+</ul>
+</li>
+<li>path.solve（）//将多个路径拼接为绝对路径</li>
+<li><p>path.normalize()//将非标准路径转换为标准路径</p>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="同步调用和异步调用"><a href="#同步调用和异步调用" class="headerlink" title="同步调用和异步调用"></a>同步调用和异步调用</h3><p>只有fs模块对文件的几乎所有操作都有同步和异步两种形式，例如：readFile() 和 readFileSync()。</p>
+</li>
+<li>同步读取文件<code>readFileSync()</code><ul>
+<li>同步代码会阻塞后续代码的执行，效率不高</li>
+<li>同步API需要通过try-catch来捕获异常</li>
+<li>同步执行文件比较符合程序员的逻辑，比较简单,就是所有任务都是自己干，而且是一步一步往下执行</li>
+</ul>
+</li>
+<li><p>异步读取文件</p>
+<ul>
+<li>异步API往往会伴随着一个回调函数用来接收返回值或者处理异常</li>
+<li>回调函数的参数中第一个参数一般都是err对象，用来判定异步API是否异常</li>
+<li>异步API不能通过try-catch来捕获异常</li>
+<li><p>一般文件操作中，所有的异步API，都会在回调函数中提供了一个 error 对象<br>如果操作过程有异常，则 error 是一个异常对象<br>如果操作成功，没有问题，则 error 是一个 null<br>所以，为了判定是否有异常，if(err) { // 处理异常 }</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  fs.readFile(<span class="string">'./data/'</span>, <span class="string">'utf8'</span>, (err, cai) =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(cai)</div><div class="line">  &#125;)</div><div class="line">&#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'菜卖没了'</span>)</div><div class="line">&#125;</div><div class="line">执行结果为<span class="literal">undefined</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>开发阶段，使用 throw err 的形式抛出异常<br>目的是为了快速的定位代码的错误<br>如果是网站服务器中，这个就不会去 throw err，一般会有异常处理机制<br>一般在生产环境，会处理异常，例如记录日志方便排查错误<br>throw err 会直接抛出异常，退出进程</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fs.readFile(<span class="string">'./data/'</span>, <span class="string">'utf8'</span>, (err, cai) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">throw</span> err</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(cai)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong> 文件乱码的原因是，指定的是用utf-8解析，但是文件格式是gbk,所以出现的中文文字是乱码 </strong></p>
+<h3 id="node支持的编码类型"><a href="#node支持的编码类型" class="headerlink" title="node支持的编码类型"></a>node支持的编码类型</h3></li>
+<li>ascii</li>
+<li>utf8</li>
+<li>万国码</li>
+<li>utf16le</li>
+<li>ucs2</li>
+<li>base64</li>
+<li><p>图片编码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&lt;img src="data:image/wenjianggeshi(forexample jpg);base64,base64 编码"&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>latin1</p>
+</li>
+<li>binary</li>
+<li>hex</li>
+<li>解决不支持node编码的方法是引入第三方包，npm iconv-lite<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line"><span class="keyword">const</span> iconv = <span class="built_in">require</span>(<span class="string">'iconv-lite'</span>)</div><div class="line"></div><div class="line">Node 支持的编码格式</div><div class="line">这里乱码的原因就是：文件本身是 gbk，但是你使用 utf8 去解析，所以就失败，乱码了</div><div class="line">fs.readFile(<span class="string">'./data/168305.lrc'</span>, (err, data) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    <span class="keyword">throw</span> err</div><div class="line">  &#125;</div><div class="line">  将指定的二进制数据按照特定的编码解析成字符</div><div class="line">  <span class="built_in">console</span>.log(iconv.decode(data, <span class="string">'gbk'</span>))</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="第三方命令行工具"><a href="#第三方命令行工具" class="headerlink" title="第三方命令行工具"></a>第三方命令行工具</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
           
           </div>
@@ -508,7 +2284,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -517,7 +2293,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -526,7 +2302,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -564,7 +2340,7 @@
             <ul class="links-of-blogroll-list">
               
                 <li class="links-of-blogroll-item">
-                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰" target="_blank">阮一峰</a>
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
                 </li>
               
             </ul>

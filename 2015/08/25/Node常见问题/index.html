@@ -1,0 +1,787 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Node," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="123456789给`exports`赋值不管用但是下面这种做法就可以`exports = module.exports = _;`下面这种做法的目的:可能在别的地方更改了exports的引用让`exports = module.exports` 的目的就是让两者重新建立引用关系
+
+javaScript 书写标准 standerdjs.com
+node操作模板拼接字符串，会编码输出 
+123456">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node常见问题">
+<meta property="og:url" content="http://yoursite.com/2015/08/25/Node常见问题/index.html">
+<meta property="og:site_name" content="瀟涙Ray">
+<meta property="og:description" content="123456789给`exports`赋值不管用但是下面这种做法就可以`exports = module.exports = _;`下面这种做法的目的:可能在别的地方更改了exports的引用让`exports = module.exports` 的目的就是让两者重新建立引用关系
+
+javaScript 书写标准 standerdjs.com
+node操作模板拼接字符串，会编码输出 
+123456">
+<meta property="og:updated_time" content="2017-02-23T06:52:22.804Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node常见问题">
+<meta name="twitter:description" content="123456789给`exports`赋值不管用但是下面这种做法就可以`exports = module.exports = _;`下面这种做法的目的:可能在别的地方更改了exports的引用让`exports = module.exports` 的目的就是让两者重新建立引用关系
+
+javaScript 书写标准 standerdjs.com
+node操作模板拼接字符串，会编码输出 
+123456">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/25/Node常见问题/"/>
+
+
+
+
+
+  <title> node常见问题 | 瀟涙Ray </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">瀟涙Ray</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/html/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/08/25/Node常见问题/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="潇泪　|　LiNa Lei">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/headimg.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="瀟涙Ray">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="瀟涙Ray" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                node常见问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-25T00:00:00+08:00">
+                2015-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">给<span class="string">`exports`</span></div><div class="line">赋值不管用</div><div class="line">但是下面这种做法就可以</div><div class="line"><span class="string">`exports = module.exports = _;`</span></div><div class="line">下面这种做法的目的:可能在别的地方更改了</div><div class="line">exports</div><div class="line">的引用</div><div class="line">让<span class="string">`exports = module.exports`</span> </div><div class="line">的目的就是让两者重新建立引用关系</div></pre></td></tr></table></figure>
+<ul>
+<li>javaScript 书写标准 standerdjs.com</li>
+<li><p>node操作模板拼接字符串，会编码输出 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1. 调用 template.compile 方法，传入一个模板字符串，得到一个渲染函数</span></div><div class="line"><span class="comment">//# 表示不编码输出</span></div><div class="line"><span class="keyword">const</span> render = template.compile(<span class="string">`</span></div><div class="line">&lt;h1&gt;&#123;&#123;# title &#125;&#125;&lt;/h1&gt;</div><div class="line">`)</div><div class="line"></div><div class="line"><span class="comment">// 防止用户恶意注入 JavaScript 代码</span></div><div class="line"><span class="keyword">const</span> result = render(&#123;</div><div class="line">  <span class="attr">title</span>: <span class="string">'&lt;span&gt;hello&lt;/span&gt;'</span></div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(result)</div></pre></td></tr></table></figure>
+</li>
+<li><p>正则表达是匹配问题</p>
+<ul>
+<li>正则分组之后，如果匹配成功，则会得到一个数组</li>
+<li>数组中第 0 项永远是要匹配的字符串自身</li>
+<li>从 1 项开始，数正则表达式中的括号就可以了（数左括号）</li>
+<li>左括号是第几个，则解析出来的数据数组中下标为该数字的元素</li>
+</ul>
+</li>
+<li>markdown文件直接转html文件的时候，会出现在浏览器上看html文件的时候会有乱码的情况，<br>原因是有两种情况：1、如果是通过http传输他会通过content-type来看他的那个字符编码是<br>什么格式，2、如果是本地转换他会看html里面的mate charset 来看里面的字符编码格式。<br>直接将md转为html的时候，很有可能是因为没有写mate charset标签的字符编码，所以会出现乱码</li>
+<li><p>http解析数据</p>
+<ul>
+<li>当客户端浏览器收到你发送的响应数据的时候</li>
+<li>浏览器会先查看响应报文头中的 Content-Type 中的 charset 编码，然后根据该编码解析数据</li>
+<li>如果响应报文头中没有 Content-Type 那么浏览器则根据 HTML 结构中的 <meta charset="UTF-8"> 来解析数据</li>
+</ul>
+</li>
+<li><p>对markdown转换成html时，在引用模板写入html结构的时候会出现只是将html转换成字符串没有转变成html结构的情况，是因为有”&lt;”的原因浏览器会将”&lt;”进行转换，这时需要在模板中加<code></code>，意为不进行编码解析,防止用户注入恶意的javascript代码</p>
+</li>
+<li>操作文件的路径使用注意事项：<ul>
+<li>如果是以 / 开头的路径，则就是去执行当前脚本所属的磁盘根路径去找</li>
+<li>如果是以 C:/dev/nvm/settings.txt ，则直接去找该绝对路径</li>
+<li>如果是以 ./ 或者 ../ 开头的，则是相对于执行 node 命令的时候所处的路径</li>
+<li>所以说，如果是操作相对路径的文件，最好把相对路径转为绝对路径</li>
+<li>但是绝对路径又不能写死</li>
+<li>可以使用每一个文件模块中都提供了两个属性：<strong>dirname 和 </strong>filename</li>
+<li>__dirname 用来获取当前文件模块所属目录的绝对路径</li>
+<li>__filename 用来获取当前文件的绝对路径，这个属性用的比较少</li>
+<li>注意：加载自己写的相对路径模块不受执行 node 命令所处目录影响</li>
+<li>也就是说，加载文件模块还是使用相对路径</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js"><span class="comment">//  C:\Users\iroc\Desktop&gt; node code/02_文件路径.js</span>
+<span class="comment">//     该文件中的相对路径是去执行node命令的目录地方去找了 'C:\Users\iroc\Desktop\README.md</span>
+<span class="comment">//  C:\Users\iroc&gt; node .\Desktop\code\02_文件路径.js</span>
+<span class="comment">//     C:\Users\iroc\README.md</span>
+<span class="comment">//  想要解决上面的问题：</span>
+<span class="comment">//     每一个模块中都提供了两个属性：__dirname 和 __filename</span>
+</code></pre>
+<ul>
+<li>表单 GET 提交：（表单的 method 属性默认就是 get）：<ul>
+<li>表单会将表单中所有具有 name 属性的 input 按照</li>
+<li>name=input-value&amp;name1=input-value2&amp;xxx=xxx</li>
+<li>拼接完之后，找到自己的 action（就是请求路径）</li>
+<li>然后在 action 之后 加一个 ? ，后面跟上拼接好的查询字符串</li>
+<li>最后，发起请求</li>
+<li>albumName=xxx&amp;xxx=xxx</li>
+<li>/album/add?albumName=xxx&amp;xxx=xxx</li>
+</ul>
+</li>
+<li><p>有文件的表单提交</p>
+<ul>
+<li>请求方法必须是post提交</li>
+<li>将表单的enctype设置为multipart/form-data(得到的是二进制数据)</li>
+</ul>
+</li>
+<li>编码encodeURI(要编码的字符串)<br>解码decodeURI（要解码的字符串）</li>
+<li><p>post提交不含文件的表单，后台解析字符串是通过什么方式进行？</p>
+<p>可以引入querystring,核心模块，通过queryString.parse(字符串)得到的就是一个字符<br>串对象</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node/" rel="tag"># Node</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/21/Node 文件操作/" rel="next" title="Node 文件操作">
+                <i class="fa fa-chevron-left"></i> Node 文件操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/03/使用node开发命令行复制工具/" rel="prev" title="使用node开发命令行复制工具">
+                使用node开发命令行复制工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/headimg.png"
+               alt="潇泪　|　LiNa Lei" />
+          <p class="site-author-name" itemprop="name">潇泪　|　LiNa Lei</p>
+           
+              <p class="site-description motion-element" itemprop="description">态度决定高度</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/leilina" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/blog/" title="阮一峰的网络日志" target="_blank">阮一峰的网络日志</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">潇泪　|　LiNa Lei</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
